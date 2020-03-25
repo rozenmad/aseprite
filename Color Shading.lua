@@ -38,8 +38,8 @@ function colorShift(color, hueShift, satShift, lightShift, shadeShift)
     end
 
     -- SHIFT SHADING
-    local newShade = Color{red = newColor.red, green = newColor.green, blue = newColor.blue}
-     if (shadeShift >= 0)
+    local newShade = Color(newColor)
+    if (shadeShift > 0)
         then
         newShade.hue = newShade.hue - 60
         newColor = lerp_colors(newColor, newShade, shadeShift)
@@ -125,12 +125,11 @@ function showColors()
     :shades{ id='sha', label='Shading',
            colors={ S1, S2, S3, foreground, S5, S6, S7 },
            onclick=function(ev) app.fgColor=ev.color end }
-    -- SHADING
+    -- SHADING INV
     :shades{ id='sha', label='Shading Inv',
            colors={ I1, I2, I3, foreground, I5, I6, I7 },
            onclick=function(ev) app.fgColor=ev.color end }
-    -- SHADING
-    -- SHADING
+    -- SHADING ORIGINAL
     :shades{ id='sho', label='Shading Original',
            colors={ O1, O2, O3, foreground, O5, O6, O7 },
            onclick=function(ev) app.fgColor=ev.color end }
